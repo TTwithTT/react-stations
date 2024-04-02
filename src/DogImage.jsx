@@ -1,10 +1,10 @@
 // @ts-check
 import React from 'react';
 
-export const DogImage = (props) => {
+export const DogImage = (imageUrl) => {
   return (
     <div>
-      <img src={props.imageUrl} alt="cute dog" />
+      <img src={imageUrl} alt="cute dog" />
     </div>
   );
 }

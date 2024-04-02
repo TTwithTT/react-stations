@@ -3,6 +3,7 @@
 import './App.css'
 import Header from './Header'
 import Description from './Description'
+import DogListContainer from './DogListContainer'
 
 /**
  * @type {() => JSX.Element}
@@ -14,6 +15,7 @@ export const App = () => {
       <Header />
       <h2>Hello, world!</h2>
       <Description />
+      <DogListContainer />
     </div>
   )
 }
