@@ -6,7 +6,7 @@ import DogImage from './DogImage';
 export const DogListContainer = () => {
   const [breeds, setBreeds] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
-  const [dogImages, setDogImages]
+  const [dogImages, setDogImages] = useState([]);s
 
   useEffect(() => {
     fetchDogList();
@@ -26,12 +26,18 @@ export const DogListContainer = () => {
     setSelectedBreed(event.target.value);
   }
 
+  const setDogImageUrls = () => {
+
+  }
+
   return (
     <div>
       <BreedsSelect breeds={breeds} selectedBreed={selectedBreed} onChange={handleBreedChange} />
-      <button onClick={fetchDogImage}>表示</button>
+      <button onClick={setDogImageUrls}>表示</button>
       <div>
-        
+        {dogImages.map((image) => (
+          <DogImage imageUrl={image} />
+        ))} 
       </div>
     </div>
   );
