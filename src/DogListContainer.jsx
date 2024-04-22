@@ -6,7 +6,7 @@ import DogImage from './DogImage';
 export const DogListContainer = () => {
   const [breeds, setBreeds] = useState([]);
   const [selectedBreed, setSelectedBreed] = useState('');
-  const [dogImages, setDogImages] = useState([]);s
+  const [dogImages, setDogImages] = useState([]);
 
   useEffect(() => {
     fetchDogList();
@@ -26,14 +26,17 @@ export const DogListContainer = () => {
     setSelectedBreed(event.target.value);
   }
 
-  const setDogImageUrls = () => {
-
+  const fetchDogImages = () => {
+    fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random/12`)
+      .then(response => response.json())
+      .then(data => setDogImages(data.message))
+      .catch(error => console.error('Error fetching dog images:', error));
   }
 
   return (
     <div>
       <BreedsSelect breeds={breeds} selectedBreed={selectedBreed} onChange={handleBreedChange} />
-      <button onClick={setDogImageUrls}>表示</button>
+      <button onClick={fetchDogImages}>表示</button>
       <div>
         {dogImages.map((image) => (
           <DogImage imageUrl={image} />
